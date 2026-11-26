@@ -12,13 +12,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   useEffect(() => {
     if (!loading && !user) {
       router.push("/login");
-    } else if (!loading && user && !user.hasCompletedOnboarding) {
-      router.push("/onboarding");
     }
   }, [user, loading, router]);
 
-  if (loading || !user || !user.hasCompletedOnboarding) {
-    return <div className="min-h-screen bg-[#050816] flex items-center justify-center text-white">Loading Intelligence...</div>;
+  if (loading || !user) {
+    return <div className="min-h-screen bg-[#050816] flex items-center justify-center text-white">Loading Dashboard...</div>;
   }
   return (
     <div className="flex min-h-screen" style={{ background: "#020617" }}>
